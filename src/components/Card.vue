@@ -1,8 +1,8 @@
 <template>
   <div class='card'>
-    <span>{{ name }}</span>
-    <span>{{ email }}</span>
-    <span>{{ body }}</span>
+    <h2 class='subtitle'>{{ name }}</h2>
+    <p class='content'>{{ body }}</p>
+    <i class='text'>{{ email }}</i>
   </div>
 </template>
 
@@ -21,17 +21,24 @@ export default {
 <style scoped>
 
 .card {
-  font-size: 17px;
-  line-height: 24px;
+  display: flex;
+  flex-direction: column;
   color:#ffffff;
   background-color: #37393B;
-  padding: 15px;
+  padding: 20px 15px 15px;
   --borderWidth: 3px;
   background: #1D1F20;
   position: relative;
   border-radius: 5px;
   height: 400px;
   width: 280px;
+  word-break: break-word;
+}
+
+.card .text {
+  font-size: 0.9em;
+  text-align: right;
+  margin-top: auto;
 }
 
 .card:after {
@@ -58,6 +65,18 @@ export default {
   100% {
     background-position: 0% 50%;
   }
+}
+
+.subtitle {
+  display: block;
+  font-size: 1.8em;
+  line-height: 1em;
+  margin-bottom: 25px;
+}
+
+.content {
+  font-size: 1em;
+  margin-top: 0;
 }
 
 </style>
