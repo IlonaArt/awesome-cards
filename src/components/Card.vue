@@ -1,5 +1,6 @@
 <template>
   <div class='card'>
+    <button @click='$emit(remove)' class='delete-btn' type='button' aria-label='delete card'></button>
     <h2 class='subtitle'>{{ name }}</h2>
     <p class='content'>{{ body }}</p>
     <i class='text'>{{ email }}</i>
@@ -7,6 +8,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     name: String,
@@ -25,7 +27,7 @@ export default {
   flex-direction: column;
   color:#ffffff;
   background-color: #37393B;
-  padding: 20px 15px 15px;
+  padding: 15px;
   --borderWidth: 3px;
   background: #1D1F20;
   position: relative;
@@ -37,8 +39,8 @@ export default {
 
 .card .text {
   font-size: 0.9em;
-  text-align: right;
   margin-top: auto;
+  text-align: right;
 }
 
 .card:after {
@@ -77,6 +79,66 @@ export default {
 .content {
   font-size: 1em;
   margin-top: 0;
+  overflow-y: auto;
+}
+
+.content::-webkit-scrollbar-track {
+  background-color: #37393B;
+  border-radius: 6px;
+}
+
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar:horizontal {
+  height: 13px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: dimgrey;
+}
+
+.delete-btn {
+  position: relative;
+  align-self: flex-end;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  transition: .2s background-color ease
+}
+
+.delete-btn:hover,
+.delete-btn:focus {
+  background-color: tomato;
+}
+
+.delete-btn::before,
+.delete-btn::after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 11px;
+  width: 2px;
+  height: 14px;
+  top: 5px;
+  background-color: #000;
+}
+
+.delete-btn::before {
+  transform: rotate(45deg);
+}
+
+.delete-btn::after {
+  transform: rotate(-45deg);
 }
 
 </style>

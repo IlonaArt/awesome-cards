@@ -2,8 +2,11 @@
   <div id='app'>
     <h1 class='title wave'>{{ title }}</h1>
     <p class='text'>Are you ready?</p>
+    <button @click='addCard()' class='add-btn' type='button'>
+      <span class='text-btn'>Add card+</span> 
+    </button>
     <ul class='list'>
-      <li class='item' v-for='card of cards' v-bind:key='card.id'>
+      <li class='item' v-for='(card, index) of cards' v-bind:key='card.id' v-on:remove='cards.splice(index, 1)'>
         <Card v-bind:email='card.email' v-bind:name='card.name' v-bind:body='card.body'></Card>
       </li>
     </ul>
@@ -15,7 +18,6 @@ import Card from './components/Card.vue'
 
 export default {
   name: 'App',
-  props: ['name', 'email', 'body'],
   data() {
     return {
       title: 'Let\'s walk through these awesome cards',
@@ -34,6 +36,20 @@ export default {
       .then(function(data) {
         content.cards = data;
       })
+      .catch(error => console.error(error))
+  },
+  methods: {
+    addCard() {
+      this.cards.unshift({
+        "id": this.cards.length + 1,
+        "name": "kjh",
+        "email": "h@gardner.biz",
+        "body": "laudantium enim quasi eam autem quasi\nreiciendis et nam sapiente accusantium"
+      })
+    },
+    removeCard() {
+      this.cards.splice()
+    }
   }
 }
 </script>
@@ -97,5 +113,27 @@ body {
   20% {
     color: palevioletred
   }
+}
+
+.add-btn {
+  display: block;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 24px;
+  height: 40px;
+  padding: 5px 20px;
+  outline: none;
+  border: 3px solid transparent;
+}
+
+.add-btn:hover,
+.add-btn:focus {
+  border: 3px solid violet
+}
+
+.text-btn {
+  font-size: 1.5em;
+  font-weight: 600;
 }
 </style>
