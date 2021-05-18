@@ -1,26 +1,36 @@
 <template>
-  <div class='card'>
-    <button @click='$emit(remove)' class='delete-btn' type='button' aria-label='delete card'></button>
+  <router-link :to='getRoute' class='card' :id='id'>
+    <button @click='removeCard' class='delete-btn' type='button' aria-label='delete card'></button>
     <h2 class='subtitle'>{{ name }}</h2>
     <p class='content'>{{ body }}</p>
     <i class='text'>{{ email }}</i>
-  </div>
+  </router-link>
 </template>
 
 <script>
 
 export default {
   props: {
+    id: Number,
     name: String,
     email: String,
     body: String,
   },
-  name: 'Card',
+  computed: {
+    getRoute() {
+      return `/card/${this.id}`;
+    }
+  },
+  methods: {
+    removeCard() {
+      this.$emit('remove', this.id)
+    }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 
 .card {
   display: flex;
@@ -35,6 +45,12 @@ export default {
   height: 400px;
   width: 280px;
   word-break: break-word;
+  text-decoration: none;
+}
+
+.card:hover .subtitle,
+.card:focus .subtitle {
+  color: mediumslateblue;
 }
 
 .card .text {
