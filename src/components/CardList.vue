@@ -130,16 +130,28 @@ export default {
 
 .list {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2vw;
   margin: 0 auto;
   max-width: 1140px;
   padding: 0;
+}
 
-  /* @media screen (max-width: 1024px) {
-    
-  } */
+@media screen and (max-width: 1000px) {
+  .list {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+}
+
+@media screen and (max-width: 684px) {
+  .list {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+  }
 }
 
 .item {
@@ -147,7 +159,7 @@ export default {
 }
 
 .form {
-  width: 500px;
+  max-width: 500px;
   margin: 0 auto;
 }
 

@@ -44,11 +44,29 @@ body {
   margin-right: 20px;
 }
 
+@media screen and (max-width: 880px) {
+  #app {
+    margin-top: 20px;
+  }
+  .title {
+    margin-top: 20px;
+  }
+}
+
 .title {
   text-align: center;
   color: #fff;
   font-size: 3.8em;
   margin-bottom: 12px;
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 2.5em;
+  }
+  .text {
+    margin-top: 0;
+  }
 }
 
 .text {

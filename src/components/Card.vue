@@ -1,6 +1,6 @@
 <template>
   <router-link :to='getRoute' class='card' :id='id'>
-    <button @click='removeCard' class='delete-btn' type='button' aria-label='delete card'></button>
+    <button @click.prevent='removeCard' class='delete-btn' type='button' aria-label='delete card'></button>
     <h2 class='subtitle'>{{ name }}</h2>
     <p class='content'>{{ body }}</p>
     <i class='text'>{{ email }}</i>
@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     removeCard() {
-      this.$emit('remove', this.id)
+      this.$emit('remove', this.id);
     }
   }
 }
@@ -43,7 +43,7 @@ export default {
   position: relative;
   border-radius: 5px;
   height: 400px;
-  width: 280px;
+  max-width: 280px;
   word-break: break-word;
   text-decoration: none;
 }
