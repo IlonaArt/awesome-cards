@@ -12,8 +12,8 @@ const Content = CardContent;
 const List = CardList;
 
 const routes = [
-  { path: '', component: List},
-  { name: 'content', path: '/card/:id', component: Content },
+  { path: '/awesome-cards', component: List},
+  { name: 'content', path: '/awesome-cards/card/:id', component: Content },
   { path: '*', component: E404 }
 ]
 
