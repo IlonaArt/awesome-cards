@@ -12,9 +12,19 @@ const Content = CardContent;
 const List = CardList;
 
 const routes = [
-  { path: '/awesome-cards', component: List},
-  { name: 'content', path: '/awesome-cards/card/:id', component: Content },
-  { path: '*', component: E404 }
+  { 
+    name: 'list',
+    path: '/',
+    component: List
+  },{
+    name: 'content',
+    path: '/awesome-cards/card/:id',
+    component: Content 
+  },{
+    name: 'E404',
+    path: '*',
+    component: E404,
+  }
 ]
 
 const router = new VueRouter({
